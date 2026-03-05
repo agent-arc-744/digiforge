@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "digiforge"
-version = "0.1.0"
+version = "0.2.0"
 description = "DigiAssets v3 SDK for DigiByte — clean, production-grade, UTXO-native"
 authors = [{name = "Kael", email = "kael@project-trinity.io"}]
 license = {text = "MIT"}

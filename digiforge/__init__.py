@@ -1,26 +1,27 @@
 """
 digiforge
 =========
-DigiAssets v3 SDK for DigiByte.
-
-The SDK that makes DigiAsset creation feel like it should.
+DigiAssets v3 SDK for DigiByte — clean, production-grade, UTXO-native.
 
 Kael — Project Trinity — 2026
 
-Quick start::
+Quick start (asset issuance)::
 
     from digiforge import DigiForge, AssetMetadata, Divisibility
 
     forge = DigiForge.from_env()
-
-    meta = AssetMetadata(
-        asset_name="MyToken",
-        issuer="Project Trinity",
-        description="A DigiAsset on DigiByte.",
-    )
-
+    meta  = AssetMetadata(asset_name="MyToken", issuer="Project Trinity")
     result = forge.issue(amount=1_000_000, metadata=meta)
-    print(result)  # TXID + AssetId
+    print(result)
+
+Quick start (CDP / DigiDollar)::
+
+    from digiforge.cdp import CDPClient
+
+    cdp = CDPClient.testnet(password="secret")
+    health = cdp.health()
+    result = cdp.mint(collateral_dgb_satoshis=10_000 * 100_000_000, ratio=300)
+    print(result)
 """
 
 from .assets import (
@@ -59,8 +60,8 @@ from .metadata import (
 from .rpc import DigiByteRPC, NodeConfig
 from .utils import derive_asset_id, encode_leb128, decode_leb128
 
-__version__ = "0.1.0"
-__author__ = "Kael — Project Trinity"
+__version__ = "0.2.0"
+__author__  = "Kael -- Project Trinity"
 __license__ = "MIT"
 
 __all__ = [
@@ -101,4 +102,8 @@ __all__ = [
     "derive_asset_id",
     "encode_leb128",
     "decode_leb128",
+    # v0.2.0 -- CDP modules (import directly from submodules)
+    # from digiforge.cdp import CDPClient, CDPPosition, MintResult, RedeemResult
+    # from digiforge.oracle import OracleClient, OraclePrice
+    # from digiforge.scripts import DigiDollarScripts, CollateralOutput
 ]
