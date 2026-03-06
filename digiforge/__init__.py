@@ -60,7 +60,7 @@ from .metadata import (
 from .rpc import DigiByteRPC, NodeConfig
 from .utils import derive_asset_id, encode_leb128, decode_leb128
 
-__version__ = "0.2.0"
+__version__ = "0.3.0-dev"
 __author__  = "Kael -- Project Trinity"
 __license__ = "MIT"
 
@@ -106,4 +106,5 @@ __all__ = [
     # from digiforge.cdp import CDPClient, CDPPosition, MintResult, RedeemResult
     # from digiforge.oracle import OracleClient, OraclePrice
     # from digiforge.scripts import DigiDollarScripts, CollateralOutput
+    # from digiforge.pge import PerpetualGivingEngine, PGEConfig, Cause
 ]
